@@ -20,16 +20,19 @@ class Generator(object):
         text_file.close()
 
     def generate_line(self):
+
+        end_of_line = [u'.', u'!', u'?']
+
         words_list = []
         first_word = self.words[randint(0, len(self.words) - 1)]
         words_list.append(first_word[0].upper() + first_word[1:])
-        if first_word[-1] == u'.':
+        if first_word[-1] in end_of_line:
             return ' '.join(words_list)
 
         second_index = randint(0, len(self.double_words[first_word]) - 1)
         second_word = self.double_words[first_word][second_index]
         words_list.append(second_word)
-        if second_word[-1] == u'.':
+        if second_word[-1] in end_of_line:
             return ' '.join(words_list)
 
         while True:
@@ -44,7 +47,7 @@ class Generator(object):
                 third_word = self.words[randint(0, len(self.words) - 1)]
             words_list.append(third_word)
 
-            if third_word[-1] == u'.':
+            if third_word[-1] in end_of_line:
                 break
 
         return ' '.join(words_list)
