@@ -19,7 +19,6 @@ class Generator(object):
                 text_file.write('\n\t')
         text_file.close()
 
-
     def generate_line(self):
         words_list = []
         first_word = self.words[randint(0, len(self.words) - 1)]
@@ -31,7 +30,7 @@ class Generator(object):
         second_word = self.double_words[first_word][second_index]
         words_list.append(second_word)
         if second_word[-1] == u'.':
-            return ' '.join(words_list)        
+            return ' '.join(words_list)
 
         while True:
             first_word = words_list[-2].lower()
@@ -49,6 +48,7 @@ class Generator(object):
                 break
 
         return ' '.join(words_list)
+
 
 def main():
     download_corpus(folder_path='corpus/', overwrite=False, output=True)
